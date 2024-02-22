@@ -1,3 +1,4 @@
+from atexit import register
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.decorators.cache import cache_page
@@ -45,6 +46,7 @@ import requests
 from bs4 import BeautifulSoup
 from django.http import HttpResponse
 from django.shortcuts import render
+
 from urllib.parse import urlparse
 
 def detalhes_noticia(request, url):
@@ -70,3 +72,14 @@ def detalhes_noticia(request, url):
         return render(request, 'noticias/detalhes_noticia.html', context)
     else:
         return HttpResponse('Erro ao acessar a página da notícia.')
+
+from django import template
+from urllib.parse import urlparse
+
+register = template.Library()
+
+# Filtro personalizado para extrair apenas o domínio da URL
+@register.filter(name='domain_only')
+def domain_only(url):
+    parsed_url = urlparse(url)
+    return parsed_url.netloc

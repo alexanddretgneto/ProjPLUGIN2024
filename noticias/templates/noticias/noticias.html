@@ -1,4 +1,6 @@
 {% extends '../portaldoradar2024/index.html' %}
+{% load custom_filters %} <!-- Carrega os filtros personalizados -->
+
 {% block title %}Notícias do G1{% endblock %}
 {% block content %}
 <div class="mt-5"> 
@@ -73,7 +75,9 @@
                     {% endif %}
                     <div class="card-body">
                         <!-- Modificação aqui para adicionar o link para a página de detalhes da notícia -->
-                        <h5 class="card-title text-justify"><a href="{% url 'detalhes_noticia' news.link %}">{{ news.title }}</a></h5>
+                        <!-- Modificação na chamada da URL reversa -->
+                    <h5 class="card-title text-justify"><a href="{% url 'detalhes_noticia' news.link|domain_only %}">{{ news.title }}</a></h5>
+
                     </div>
                 </div>
                 {% if forloop.counter|divisibleby:3 and not forloop.last %}
