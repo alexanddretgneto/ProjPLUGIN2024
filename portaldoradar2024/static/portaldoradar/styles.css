@@ -1,0 +1,84 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+.wrapper {
+    display: flex;
+    flex: 1;
+}
+.sidebar {
+    min-width: 200px;
+    background-color: #343a40;
+    color: #fff;
+    padding: 15px;
+}
+.content {
+    flex: 1;
+    padding: 15px;
+}
+.carrossel{
+
+    padding-bottom: 50px;
+    padding-top: 10px;
+
+
+}
+
+.footer {
+    
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: flex-end; /* Alinha o conteúdo na parte inferior */
+    padding-bottom: 10px; 
+    align-items: flex-end; /* Alinha o conteúdo na parte inferior */
+    background-color: #343a40;
+    color: #fff;
+    
+    width: 100%;
+    height: 80px; /* Ajusta a altura do footer */
+    padding-bottom: 0px; /* Adiciona espaço abaixo do texto */
+    
+}
+    
+.card-equal-height_youtube {
+    height: 100%;
+}
+
+.btn-assistir_youtube {
+    margin-top: auto;
+    display: block;
+}
+
+.card-img-top_youtube {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-title_youtube {
+    text-align: justify;
+    text-transform: uppercase;
+}
+
+.btn-youtube_youtube {
+    color: #fff;
+    background-color: #ff0000;
+    border-color: #ff0000;
+}
+
+.btn-youtube_youtube:hover {
+    background-color: #cc0000;
+    border-color: #cc0000;
+}
+.card_loja {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Ajuste do botão */
+.btn-full-width_loja {
+    width: 100%;
+    margin-bottom: 3px; /* Adiciona margem acima do botão */
+}

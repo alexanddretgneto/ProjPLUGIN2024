@@ -1,0 +1,87 @@
+{% extends '../portaldoradar2024/index.html' %}
+{% block title %}Notícias do G1{% endblock %}
+{% block content %}
+<div class="mt-5"> 
+    
+    <h1 style="text-align: center; margin-top: 30px;" class="mb-4">Veja as principais notícias em primeira mão.</h1>
+
+    <!-- Conteúdo do carrossel -->
+    <div class="mt-5"> <!-- Adicionando margem superior -->
+        
+
+    <div class="card-deck">
+        {% for news in headlines|slice:"6:11" %}
+            <div style="margin-top: 20px;" class="card">
+                {% if news.image_url %}
+                    <img src="{{ news.image_url }}" class="card-img-top" alt="{{ news.title }}">
+                {% endif %}
+                <div class="card-body">
+                    <!-- Modificação aqui para adicionar o link para a página de detalhes da notícia -->
+                    <h5 class="card-title text-justify"><a href="{% url 'detalhes_noticia' news.link %}">{{ news.title }}</a></h5>
+                </div>
+            </div>
+            {% if forloop.counter|divisibleby:2 and not forloop.last %}
+                </div><div class="card-deck">
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <h1 style="text-align: center; color: red;" class="mb-4">Últimas Notícias</h1>
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            {% for news in headlines|slice:":6" %}
+                <li data-target="#carouselExampleIndicators" data-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %}></li>
+            {% endfor %}
+        </ol>
+        <div class="carousel-inner w-100">
+            {% for news in headlines|slice:":6" %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    {% if news.image_url %}
+                        <a href="{% url 'detalhes_noticia' news.link %}">
+                            <img src="{{ news.image_url }}" class="d-block mx-auto" alt="{{ news.title }}" style="max-width: 100%; height: auto;">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>{{ news.title }}</h5>
+                            </div>
+                        </a>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev" style="color: black;">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next" style="color: black;">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+<!-- Fim do conteúdo do carrossel -->
+
+
+    <div class="container-fluid" style="margin-bottom: 50px;"> <!-- Adicionando classe para ocupar toda a largura da página -->
+        <h1 style="text-align: center; margin-top: 30px; " class="mb-4">Notícias de Última Hora</h1>
+    
+        <div class="card-deck">
+            {% for news in headlines|slice:"9:17" %}
+                <div style="margin-top: 20px;" class="card">
+                    
+                    {% if news.image_url %}
+                        <img src="{{ news.image_url }}" class="card-img-top" alt="{{ news.title }}">
+                    {% endif %}
+                    <div class="card-body">
+                        <!-- Modificação aqui para adicionar o link para a página de detalhes da notícia -->
+                        <h5 class="card-title text-justify"><a href="{% url 'detalhes_noticia' news.link %}">{{ news.title }}</a></h5>
+                    </div>
+                </div>
+                {% if forloop.counter|divisibleby:3 and not forloop.last %}
+                    </div><div class="card-deck" >
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    
+</div>
+{% endblock %}
