@@ -1,0 +1,13 @@
+<!-- news/templates/news/news_detail.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ news.title }}</title>
+</head>
+<body>
+    <h1>{{ news.title }}</h1>
+    <img src="{{ news.image }}" alt="{{ news.title }}">
+    <p>Content of the news goes here...</p>
+    <a href="{% url 'news_list' %}">Back to News List</a>
+</body>
+</html>

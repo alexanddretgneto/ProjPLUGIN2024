@@ -1,0 +1,20 @@
+<!-- news/templates/news/news_list.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>G1 News</title>
+</head>
+<body>
+    <h1>G1 News</h1>
+    <ul>
+        {% for item in news %}
+            <li>
+                <a href="{% url 'news_detail' news_id=forloop.counter0 %}">
+                    <img src="{{ item.image }}" alt="{{ item.title }}">
+                    <h2>{{ item.title }}</h2>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
